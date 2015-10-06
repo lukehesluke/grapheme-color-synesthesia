@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+
+    "name": "Grapheme -> Color Synesthesia",
+    "description": "Replaces colours of letters and numbers in order to condition grapheme synesthesia",
+    "version": "0.0",
+    "content_scripts": [
+        {
+            "matches": ["*://*/*"],
+            "js": ["contentScript.js"],
+            "run_at": "document_end"
+        }
+    ]
+}
