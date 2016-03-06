@@ -4,28 +4,21 @@ var browserify = require('browserify')
 var babelify = require('babelify')
 var runSequence = require('run-sequence')
 
-var PATHS = {
-  js: {
-    src: './src/contentScript.js',
-    dist: './dist/contentScript.js'
-  }
-}
-
 var build = function(isDev) {
   return function() {
     return browserify({debug: isDev})
      .transform(babelify)
-     .require(PATHS.js.src, {entry: true})
+     .require('./src/contentScript.js', {entry: true})
      .bundle()
      .on('error', function(err) {
        console.error('Error:', err.message)
      })
-     .pipe(fs.createWriteStream(PATHS.js.dist))
+     .pipe(fs.createWriteStream('./dist/contentScript.js'))
   }
 }
 
 var justWatch = function() {
-  return gulp.watch(PATHS.js.src, ['build-dev'])
+  return gulp.watch('./src/**/*.js', ['build-dev'])
 }
 
 var watchAndBuild = function(cb) {
