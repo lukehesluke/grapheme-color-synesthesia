@@ -99,7 +99,7 @@ const HIGH_CONTRAST_COLOURS = [
   '#e85ebe'
 ]
 
-const LIGHTNESS_RATIO = 3/5
+const LIGHTNESS_RATIO = 1/2
 
 const hexToRgb = hexString => {
   const components = /^\#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hexString)
